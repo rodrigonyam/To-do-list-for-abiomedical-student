@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Medical Student To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Pre-Medical Student Planner</h1>
+            <p class="subtitle">Organize your path to medical school</p>
+        </header>
+
+        <!-- Field Selection -->
+        <div class="field-selector">
+            <label for="field">Select Your Field:</label>
+            <select id="field">
+                <option value="Biomedical Sciences">Biomedical Sciences</option>
+                <option value="Microbiology">Microbiology</option>
+                <option value="Biochemistry">Biochemistry</option>
+                <option value="Anatomy">Anatomy</option>
+                <option value="Physiology">Physiology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Neuroanatomy">Neuroanatomy</option>
+                <option value="Neurophysiology">Neurophysiology</option>
+                <option value="Molecular Biology">Molecular Biology</option>
+                <option value="Cell Biology">Cell Biology</option>
+                <option value="Immunology">Immunology</option>
+                <option value="Pharmacology">Pharmacology</option>
+                <option value="General">General Pre-Med</option>
+            </select>
+        </div>
+
+        <!-- Statistics Dashboard -->
+        <div class="stats-dashboard">
+            <div class="stat-card">
+                <h3 id="totalTasks">0</h3>
+                <p>Total Tasks</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="completedTasks">0</h3>
+                <p>Completed</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="pendingTasks">0</h3>
+                <p>Pending</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="progressPercent">0%</h3>
+                <p>Progress</p>
+            </div>
+        </div>
+
+        <!-- Add Task Form -->
+        <div class="add-task-section">
+            <h2>Add New Activity</h2>
+            <form id="taskForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskTitle">Activity Title*</label>
+                        <input type="text" id="taskTitle" required placeholder="e.g., Study Cell Biology">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskCategory">Category*</label>
+                        <select id="taskCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Class">Class</option>
+                            <option value="Lab">Lab</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Study">Study Session</option>
+                            <option value="Extracurricular">Extracurricular</option>
+                            <option value="Research">Research</option>
+                            <option value="Volunteering">Volunteering</option>
+                            <option value="MCAT Prep">MCAT Prep</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskDate">Date*</label>
+                        <input type="date" id="taskDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskTime">Time</label>
+                        <input type="time" id="taskTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Priority*</label>
+                        <select id="taskPriority" required>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" rows="3" placeholder="Add details about this activity..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <span>➕</span> Add Activity
+                </button>
+            </form>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="filter-section">
+            <h2>Filter Activities</h2>
+            <div class="filter-controls">
+                <select id="filterCategory">
+                    <option value="All">All Categories</option>
+                    <option value="Class">Class</option>
+                    <option value="Lab">Lab</option>
+                    <option value="Assignment">Assignment</option>
+                    <option value="Study">Study Session</option>
+                    <option value="Extracurricular">Extracurricular</option>
+                    <option value="Research">Research</option>
+                    <option value="Volunteering">Volunteering</option>
+                    <option value="MCAT Prep">MCAT Prep</option>
+                </select>
+
+                <select id="filterPriority">
+                    <option value="All">All Priorities</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+
+                <select id="filterStatus">
+                    <option value="All">All Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <button id="clearFilters" class="btn-secondary">Clear Filters</button>
+            </div>
+        </div>
+
+        <!-- Tasks List -->
+        <div class="tasks-section">
+            <div class="tasks-header">
+                <h2>My Activities</h2>
+                <button id="clearCompleted" class="btn-danger">Clear Completed</button>
+            </div>
+            <div id="tasksList" class="tasks-list">
+                <div class="empty-state">
+                    <p>📝 No activities yet. Add your first task above!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Forms Section -->
+        <div class="feedback-section">
+            <h2>💬 Feedback & Comments</h2>
+            <p class="feedback-subtitle">Share thoughts, progress updates, and guidance</p>
+
+            <!-- Student Self-Reflection Form -->
+            <div class="feedback-form-container">
+                <div class="feedback-header">
+                    <h3>🎓 Student Self-Reflection</h3>
+                    <p>Reflect on your progress, challenges, and goals</p>
+                </div>
+                <form id="studentFeedbackForm" class="feedback-form">
+                    <div class="form-group">
+                        <label for="studentName">Your Name*</label>
+                        <input type="text" id="studentName" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentDate">Date*</label>
+                            <input type="date" id="studentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentMood">How are you feeling?*</label>
+                            <select id="studentMood" required>
+                                <option value="">Select...</option>
+                                <option value="Excellent">😊 Excellent</option>
+                                <option value="Good">🙂 Good</option>
+                                <option value="Okay">😐 Okay</option>
+                                <option value="Stressed">😰 Stressed</option>
+                                <option value="Overwhelmed">😫 Overwhelmed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentComment">Your Reflection*</label>
+                        <textarea id="studentComment" rows="4" required placeholder="Share your thoughts on your progress, challenges faced, goals achieved, or areas where you need support..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span>💾</span> Save Reflection
+                    </button>
+                </form>
+            </div>
+
+            <!-- Academic Counselor Feedback Form -->
+            <div class="feedback-form-container">
+                <div class="feedback-header">
+                    <h3>👨‍🏫 Academic Counselor Feedback</h3>
+                    <p>Provide guidance, observations, and recommendations</p>
+                </div>
+                <form id="counselorFeedbackForm" class="feedback-form">
+                    <div class="form-group">
+                        <label for="counselorName">Counselor Name*</label>
+                        <input type="text" id="counselorName" required placeholder="Enter counselor name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="counselorDate">Date*</label>
+                            <input type="date" id="counselorDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="counselorRating">Academic Performance*</label>
+                            <select id="counselorRating" required>
+                                <option value="">Select...</option>
+                                <option value="Outstanding">⭐⭐⭐⭐⭐ Outstanding</option>
+                                <option value="Excellent">⭐⭐⭐⭐ Excellent</option>
+                                <option value="Good">⭐⭐⭐ Good</option>
+                                <option value="Needs Improvement">⭐⭐ Needs Improvement</option>
+                                <option value="Requires Attention">⭐ Requires Attention</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="counselorComment">Feedback & Recommendations*</label>
+                        <textarea id="counselorComment" rows="4" required placeholder="Provide academic guidance, observations on student's performance, study habits, time management, and recommendations for improvement..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span>💾</span> Submit Feedback
+                    </button>
+                </form>
+            </div>
+
+            <!-- Parent/Guardian Feedback Form -->
+            <div class="feedback-form-container">
+                <div class="feedback-header">
+                    <h3>👨‍👩‍👧 Parent/Guardian Comments</h3>
+                    <p>Share observations and support from home</p>
+                </div>
+                <form id="parentFeedbackForm" class="feedback-form">
+                    <div class="form-group">
+                        <label for="parentName">Parent/Guardian Name*</label>
+                        <input type="text" id="parentName" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentDate">Date*</label>
+                            <input type="date" id="parentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentRelation">Relationship*</label>
+                            <select id="parentRelation" required>
+                                <option value="">Select...</option>
+                                <option value="Parent">Parent</option>
+                                <option value="Guardian">Guardian</option>
+                                <option value="Family Member">Family Member</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="parentComment">Your Comments*</label>
+                        <textarea id="parentComment" rows="4" required placeholder="Share observations about your student's study habits, well-being, any concerns, or words of encouragement..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span>💾</span> Submit Comment
+                    </button>
+                </form>
+            </div>
+
+            <!-- Feedback History -->
+            <div class="feedback-history-section">
+                <div class="feedback-history-header">
+                    <h3>📋 Feedback History</h3>
+                    <div class="history-filters">
+                        <select id="feedbackFilter">
+                            <option value="All">All Feedback</option>
+                            <option value="Student">Student Reflections</option>
+                            <option value="Counselor">Counselor Feedback</option>
+                            <option value="Parent">Parent Comments</option>
+                        </select>
+                        <button id="clearFeedbackHistory" class="btn-danger">Clear History</button>
+                    </div>
+                </div>
+                <div id="feedbackHistory" class="feedback-history">
+                    <div class="empty-state">
+                        <p>💭 No feedback submitted yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
