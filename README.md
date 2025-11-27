@@ -7,6 +7,14 @@ An interactive, feature-rich web application designed specifically for pre-medic
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
+## 🔗 Live Demo
+
+**[👉 Click here to view the live website](https://rodrigonyam.github.io/To-do-list-for-abiomedical-student/)**
+
+> 💡 **Note**: If the link doesn't work yet, you need to enable GitHub Pages in your repository settings (see instructions below).
+
+---
+
 ## 🌟 Features
 
 ### 📋 Task Management
@@ -80,6 +88,22 @@ Choose from multiple pre-medical fields:
 - **Privacy First**: Data never leaves your device
 
 ## 🚀 Getting Started
+
+### 📺 View Live Demo
+
+**[Click here to view the live website](https://rodrigonyam.github.io/To-do-list-for-abiomedical-student/)**
+
+### 🔧 Enable GitHub Pages (First Time Setup)
+
+If the live demo link doesn't work, follow these steps to enable GitHub Pages:
+
+1. Go to your repository on GitHub
+2. Click on **Settings** (top right)
+3. Scroll down to **Pages** section (left sidebar)
+4. Under **Source**, select **main** branch
+5. Click **Save**
+6. Wait 1-2 minutes for deployment
+7. Your site will be live at: `https://rodrigonyam.github.io/To-do-list-for-abiomedical-student/`
 
 ### Installation
 
